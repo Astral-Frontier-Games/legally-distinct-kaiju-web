@@ -7,6 +7,7 @@ export interface RollableTableRow {
 }
 
 export interface RollableTable {
+  name: string;
   rows: RollableTableRow[];
 }
 
@@ -24,7 +25,9 @@ const RandomTable: Component<{ table: RollableTable }> = (props) => {
       <ul style={{ "list-style-type": "none" }}>
         {table.rows.map((row) => (
           <>
-            <li>{rollText(row)}: {row.text}</li>
+            <li>
+              {rollText(row)}: {row.text}
+            </li>
           </>
         ))}
       </ul>
