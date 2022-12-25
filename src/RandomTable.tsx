@@ -1,4 +1,4 @@
-import { Component, splitProps } from "solid-js";
+import { Component, For, splitProps } from "solid-js";
 
 export interface RollableTableRow {
   minRoll: number;
@@ -23,13 +23,9 @@ const RandomTable: Component<{ table: RollableTable }> = (props) => {
   return (
     <>
       <ul style={{ "list-style-type": "none" }}>
-        {table.rows.map((row) => (
-          <>
-            <li>
-              {rollText(row)}: {row.text}
-            </li>
-          </>
-        ))}
+        <For each={table.rows}>
+          {(row) => <li>{rollText(row)}: {row.text}</li>}
+        </For>
       </ul>
     </>
   );
